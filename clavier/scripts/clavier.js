@@ -1,11 +1,10 @@
-// NOTE: can be used to make more layout with a json
 var	current_layout = "Azerty";
 var	current_theme = "Light";
 
-async function 	setup()
-{
+async function setup(){
 	const	data = await loadData('./layouts.json');
 	const	buttons = document.createElement("div");
+	const	menu = document.createElement("a");
 	const	toggle = document.createElement("a");
 	const	layout_term = document.createElement("select");
 	const	reset_button = document.createElement("a");
@@ -38,6 +37,9 @@ async function 	setup()
 		});
 	};
 
+	menu.href = "../../index.html";
+	menu.innerHTML = "back to menu"
+
 	toggle.append(current_theme + " mode");
 	toggle.onclick = () => {
 		document.body.className = current_theme 
@@ -66,7 +68,8 @@ async function 	setup()
 	layout.className = "layout";
 	pressed.className = "pressed";
 
-	buttons.className = "buttons"
+	buttons.className = "buttons";
+	buttons.append(menu);
 	buttons.append(toggle);
 	buttons.append(layout_term);
 	buttons.append(reset_button);

@@ -84,8 +84,14 @@ body {
 	user-select: none;
 }
 
-.pressed > a{
-	margin: 0 5px;
+.pressed {
+	margin: auto;
+	max-width: 900px;
+	justify-content: center;
+	gap: 5px;
+}
+
+.pressed > a{ 
 	background : var(--red);
 }
 
