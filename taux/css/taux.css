@@ -1,0 +1,71 @@
+.light {
+	--background:			#eff1f5;
+	--button-background:	#ccd0da;
+	--button-hover:			#5c5f77;
+	--table-background:		#bac2de;
+	--text:					#4c4f69;
+}
+
+.dark {
+	--background:			#1e1e2e;
+	--button-background:	#313244;
+	--button-hover:			#7f849c;
+	--table-background:		#5c5f77;
+	--text:					#cdd6f4;
+}
+
+body {
+	background:	var(--background);
+}
+
+.buttons {
+	display:			flex;
+	justify-content:	space-between;
+	padding:			5px 20px;
+}
+
+.buttons > a {
+	text-decoration:	none;
+	background:			var(--button-background);
+	border:				solid var(--button-background);
+	border-radius:		15px;
+	padding:			0 20px;
+	color:				var(--text);
+}
+
+.buttons > a:hover {
+	background:	var(--button-hover);
+	color:		var(--button-background);
+}
+
+.inputs {
+	padding: 30px 0;
+}
+
+.inputs > div {
+	display:			flex;
+	justify-content:	space-between;
+	width:				300px;
+}
+
+.inputs > div > span {
+	color:	var(--text);
+}
+
+table {
+	margin: auto;
+}
+
+tr {
+	display:		table;
+	table-layout:	fixed;
+	width:			900px;
+}
+
+tr:nth-child(even) {
+	background:	var(--table-background);
+}
+
+td {
+	color:	var(--text)
+}

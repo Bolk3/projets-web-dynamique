@@ -1,0 +1,33 @@
+:root{
+	background: #1e1e2e;
+	font-size: 1.2rem;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	
+}
+
+.menu {
+	width: 900px;
+	padding: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.menu > a {
+	background: #313244;
+	padding: 5px 20px;
+	text-decoration: none;
+	border-radius: 15px;
+	border: solid #313244;
+	color: #cdd6f4;
+	text-align: center;
+}
+
+.menu > a:hover {
+	background: #6c7086;
+}

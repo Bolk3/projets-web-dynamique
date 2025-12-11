@@ -1,21 +1,29 @@
 let	state = {amount:0, year: 0, rate: 0};
+let	current_theme = "light";
 
 const	button = document.createElement("div");
+const	theme = document.createElement("a");
 const	inputs = document.createElement("div");
 const	hero = document.createElement("div");
 const	menu = document.createElement("a");
 const	tableau = document.createElement("table");
-const	colonnes = document.createElement("tbody");
 const	amount_input = create_input("amount", "number", 0, "amount");
 const	year_input = create_input("year", "number", 0, "year");
 const	rate_input = create_input("rate", "number", 0, "rate", 0.1)
 
 menu.href = "../../index.html";
 menu.innerText = "back to menu"
+theme.innerText = current_theme + " mode";
+theme.onclick = () => {
+	document.body.className = current_theme === "light" ? "dark" : "light";
+	current_theme === "light" ? current_theme = "dark" : current_theme = "light";
+	theme.innerText = current_theme + " mode";
+};
+
+document.body.className = current_theme;
 
 inputs.className = "inputs";
 hero.className = "hero";
-tableau.append(create_line("Periode", "Capital amorti", "Interets", "Capital restant du", "Mensualite"));
 
 function	create_input(name ,type, value, update, step="1"){
 	let	handler = document.createElement("div");
@@ -25,14 +33,13 @@ function	create_input(name ,type, value, update, step="1"){
 	holder.innerText = name + ":";
 
 	input.type = type;
-	// NOTE: need a better way to setup step
 	if (step != "1"){
 		input.step = step;
 	}
 	input.value = value;
 	input.onchange = () => {
 		state[update] = input.value;
-		create_content(state.amount, state.year, state.rate, colonnes);
+		create_content(state.amount, state.year, state.rate, tableau);
 	}
 	input.min = 0
 
@@ -61,6 +68,7 @@ function	restet_tableau(tableau) {
 
 function create_content(montant, annee, taux, tableau) {
     restet_tableau(tableau);
+	tableau.append(create_line("Periode", "Capital amorti", "Interets", "Capital restant du", "Mensualite"));
 
     let current_periode = 1;
     let restant = montant;
@@ -89,11 +97,11 @@ function create_content(montant, annee, taux, tableau) {
 }
 
 button.className = "buttons";
+button.append(theme);
 button.append(menu);
 inputs.append(amount_input);
 inputs.append(year_input);
 inputs.append(rate_input);
-tableau.append(colonnes);
 hero.append(tableau);
 document.body.append(button);
 document.body.append(inputs);

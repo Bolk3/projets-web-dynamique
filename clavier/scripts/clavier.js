@@ -4,6 +4,8 @@ var	current_theme = "Light";
 async function setup(){
 	const	data = await loadData('./layouts.json');
 	const	buttons = document.createElement("div");
+	const	left_menu = document.createElement("div");
+	const	right_menu = document.createElement("div");
 	const	menu = document.createElement("a");
 	const	toggle = document.createElement("a");
 	const	layout_term = document.createElement("select");
@@ -69,10 +71,14 @@ async function setup(){
 	pressed.className = "pressed";
 
 	buttons.className = "buttons";
-	buttons.append(menu);
-	buttons.append(toggle);
-	buttons.append(layout_term);
-	buttons.append(reset_button);
+	left_menu.append(menu);
+	left_menu.append(toggle);
+	left_menu.className = "left";
+	right_menu.append(layout_term);
+	right_menu.append(reset_button);
+	right_menu.className = "right";
+	buttons.append(left_menu);
+	buttons.append(right_menu);
 
 	document.body.className = current_theme;
 	document.body.append(buttons);
